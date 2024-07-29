@@ -118,6 +118,12 @@ public class Principal {
 
     }
 
+    /**
+     * Searches for brands based on the provided URL and vehicle type.
+     *
+     * @param pUrl     The URL to fetch the brand data from.
+     * @param pVehicle The type of vehicle (e.g., "carros", "motos", "caminhoes").
+     */
     private void searchBrand (String pUrl, String pVehicle) {
         jsonBody = oApiConsumption.getData(url);
 
@@ -128,7 +134,12 @@ public class Principal {
                 .sorted(Comparator.comparing(Brand::code))
                 .forEach(brand -> System.out.println("Código: " + brand.code() + " - Marca: " + brand.name()));
     }
-    
+
+    /**
+     * Searches for models based on the provided URL.
+     *
+     * @param pUrl The URL to fetch the model data from.
+     */
     private void searchModel (String pUrl) {
         jsonBody = oApiConsumption.getData(url);
 
@@ -141,6 +152,11 @@ public class Principal {
                 .forEach(model -> System.out.println("Código: " + model.code() + " - Modelo: " + model.name()));
     }
 
+    /**
+     * Searches for years based on the provided URL.
+     *
+     * @param pUrl The URL to fetch the year data from.
+     */
     private void searchYear (String pUrl) {
         jsonBody = oApiConsumption.getData(url);
 
@@ -152,6 +168,11 @@ public class Principal {
                 .forEach(year -> System.out.println("Código: " + year.code() + " - Ano: " + year.name()));
     }
 
+    /**
+     * Searches for the price based on the provided URL.
+     *
+     * @param pUrl The URL to fetch the price data from.
+     */
     private void searchPrice (String pUrl) {
         jsonBody = oApiConsumption.getData(url);
 
