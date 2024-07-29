@@ -45,15 +45,15 @@ public class Principal {
         switch (chosenVehicle) {
             case "1":
                 url += "carros/marcas";
-                searchBrand(url, "carros");
+                searchBrand("carros");
                 break;
             case "2":
                 url += "motos/marcas";
-                searchBrand(url, "motos");
+                searchBrand("motos");
                 break;
             case "3":
                 url += "caminhoes/marcas";
-                searchBrand(url, "caminhoes");
+                searchBrand("caminhoes");
                 break;
         }
 
@@ -70,7 +70,7 @@ public class Principal {
 
         url += "/" + oBrand.code() + "/modelos";
         
-        searchModel(url);
+        searchModel();
 
         do {
             System.out.println("Digite o código ou nome do modelo desejado:");
@@ -99,7 +99,7 @@ public class Principal {
 
         url += "/" + oModel.code() + "/anos";
 
-        searchYear(url);
+        searchYear();
 
         do {
             System.out.println("Digite o código do ano desejado:");
@@ -114,17 +114,16 @@ public class Principal {
 
         url += "/" + oYear.code();
 
-        searchPrice(url);
+        searchPrice();
 
     }
 
     /**
      * Searches for brands based on the provided URL and vehicle type.
      *
-     * @param pUrl     The URL to fetch the brand data from.
      * @param pVehicle The type of vehicle (e.g., "carros", "motos", "caminhoes").
      */
-    private void searchBrand (String pUrl, String pVehicle) {
+    private void searchBrand (String pVehicle) {
         jsonBody = oApiConsumption.getData(url);
 
         brands = oConvertData.getDataList(jsonBody, Brand.class);
@@ -137,10 +136,8 @@ public class Principal {
 
     /**
      * Searches for models based on the provided URL.
-     *
-     * @param pUrl The URL to fetch the model data from.
      */
-    private void searchModel (String pUrl) {
+    private void searchModel () {
         jsonBody = oApiConsumption.getData(url);
 
         DataList oDataList = oConvertData.getData(jsonBody, DataList.class);
@@ -154,10 +151,8 @@ public class Principal {
 
     /**
      * Searches for years based on the provided URL.
-     *
-     * @param pUrl The URL to fetch the year data from.
      */
-    private void searchYear (String pUrl) {
+    private void searchYear () {
         jsonBody = oApiConsumption.getData(url);
 
         years = oConvertData.getDataList(jsonBody, Year.class);
@@ -170,10 +165,8 @@ public class Principal {
 
     /**
      * Searches for the price based on the provided URL.
-     *
-     * @param pUrl The URL to fetch the price data from.
      */
-    private void searchPrice (String pUrl) {
+    private void searchPrice () {
         jsonBody = oApiConsumption.getData(url);
 
         oPrice = oConvertData.getData(jsonBody, Price.class);
